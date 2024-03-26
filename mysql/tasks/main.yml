@@ -1,0 +1,12 @@
+---
+- name: Install MySQL
+  apt:
+    name: mysql-server
+    state: latest
+  become: yes
+
+- name: Start MySQL service
+  service:
+    name: mysql
+    state: started
+  become: yes

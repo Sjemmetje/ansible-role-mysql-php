@@ -1,0 +1,21 @@
+---
+- name: Install PHP
+  apt:
+    name: php
+    state: latest
+  become: yes
+
+- name: Install PHP modules
+  apt:
+    name: "{{ item }}"
+    state: latest
+  become: yes
+  loop:
+    - php-mysql
+    # Add more PHP modules if needed
+
+- name: Restart Apache service
+  service:
+    name: apache2
+    state: restarted
+  become: yes
